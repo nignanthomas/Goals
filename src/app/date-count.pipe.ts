@@ -11,7 +11,8 @@ export class DateCountPipe implements PipeTransform {
     let dateDifference = Math.abs(value-todayWithNoTime);
     const secondsInADay = 86400;
     let dateDifferenceSeconds = dateDifference * 0.001;
-    let dateCounter = dateDifferenceSeconds / secondsInADay;
+    let dateCounter = Math.round(dateDifferenceSeconds / secondsInADay);
+    //Need to parseInt otherwise the return dateCounter for return a floating number (41.125 days)
 
 
     if (dateCounter >= 1 && value > todayWithNoTime) {
